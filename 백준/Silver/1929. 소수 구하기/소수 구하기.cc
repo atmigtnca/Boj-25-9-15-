@@ -1,5 +1,4 @@
 #include <stdio.h>
-#define L 1000000
 
 int soSu(int start)
 {
@@ -13,20 +12,15 @@ int soSu(int start)
 
 int main(void)
 {
-    int n, m, ct = 0, ar[L];
-    int *sta = &n, *end = &m, *sosu = ar;
+    int n, m;
+    int *sta = &n, *end = &m;
     scanf("%d %d", sta, end);
     for (int i = *sta; i <= *end; i++)
     {
         if (soSu(i))
         {
-            *(sosu + ct) = i;
-            ct++;
+            printf("%d\n", i);
         }
-    }
-    for (int i = 0; i < ct; i++)
-    {
-        printf("%d\n", ar[i]);
     }
 
     return 0;
