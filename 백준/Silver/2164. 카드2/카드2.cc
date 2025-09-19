@@ -1,10 +1,10 @@
 #include <stdio.h>
-#define LE 1000000
 
 int main(void)
 {
-    int n, car[LE] = {0};
+    int n;
     scanf("%d", &n);
+    int car[2 * (n - 1)];
     if (n == 1)
     {
         printf("1\n");
