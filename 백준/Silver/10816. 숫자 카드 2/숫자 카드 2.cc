@@ -4,8 +4,7 @@
 
 int main(void)
 {
-    int n, m;
-    long long sar[LE] = {0};
+    int n, m, sar[LE] = {0};
     scanf("%d", &n);
 
     for (int i = 0; i < n; i++)
@@ -22,7 +21,7 @@ int main(void)
     {
         int rt;
         scanf("%d", &rt);
-        printf("%lld ", sar[rt + P]);
+        printf("%d ", sar[rt + P]);
     }
 
     // for (int j = 0; j < rst; j++)
