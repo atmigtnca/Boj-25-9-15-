@@ -10,23 +10,21 @@ int pout(int idx, queue<pair<int, int>> &prt, vector<int> &mlist)
     int cut = 0, sat = 1;
     while (sat)
     {
-        if (prt.front().second == idx && prt.front().first >= mlist[0])
+        if (prt.front().first >= mlist[0])
         {
-            ++cut;
-            sat = 0;
+            if (prt.front().second == idx)
+            {
+                ++cut;
+                sat = 0;
+            }
+            else
+            {
+                prt.pop();
+                mlist.erase(mlist.begin());
+                ++cut;
+            }
         }
-        else if (prt.front().second == idx && prt.front().first < mlist[0])
-        {
-            prt.push(prt.front());
-            prt.pop();
-        }
-        else if (prt.front().second != idx && prt.front().first >= mlist[0])
-        {
-            prt.pop();
-            mlist.erase(mlist.begin());
-            ++cut;
-        }
-        else if (prt.front().second != idx && prt.front().first < mlist[0])
+        else if ((prt.front().second != idx || prt.front().second == idx) && prt.front().first < mlist[0])
         {
             prt.push(prt.front());
             prt.pop();
@@ -58,7 +56,6 @@ int main()
             mam.push_back(fst);
         }
         sort(mam.begin(), mam.end(), greater<int>());
-
         cout << pout(idx, prt, mam) << '\n';
     }
 
