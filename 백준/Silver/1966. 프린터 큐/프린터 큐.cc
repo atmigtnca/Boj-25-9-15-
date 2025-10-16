@@ -10,7 +10,7 @@ int pout(int idx, queue<pair<int, int>> &prt, vector<int> &mlist)
     int cut = 0, idd = 0;
     while (true)
     {
-        if (prt.front().first >= mlist[idd])
+        if (prt.front().first == mlist[idd])
         {
             if (prt.front().second == idx)
             {
