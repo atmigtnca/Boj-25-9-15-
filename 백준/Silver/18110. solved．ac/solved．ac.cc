@@ -9,7 +9,7 @@ int main()
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    int all = 0, n;
+    long long all = 0, n;
     cin >> n;
     if (n == 0)
     {
@@ -22,12 +22,6 @@ int main()
     {
         cin >> svd[i];
         all += svd[i];
-    }
-
-    if (n < 3)
-    {
-        cout << round((float)all / n) << '\n';
-        return 0;
     }
 
     double io = n * 0.15;
