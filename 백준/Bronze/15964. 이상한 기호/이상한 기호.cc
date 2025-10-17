@@ -1,20 +1,17 @@
-#include<stdio.h>
+#include <iostream>
+using namespace std;
+typedef long long ll;
 
-int hyo(int a, int b);
+int main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
 
-int main(void){
-    int a,b;
-    scanf("%d %d", &a, &b);
-    if (a <= 1000 && b <= 1000)
-    {
-        printf("%d\n", hyo(a,b));
-    }
+    ll a, b;
+    cin >> a >> b;
+    ll rst = (a + b) * (a - b);
+
+    cout << rst << '\n';
+
     return 0;
-}
-
-int hyo(int a, int b){
-    int rst;
-    rst = (a+b)*(a-b);
-
-    return rst;
 }
