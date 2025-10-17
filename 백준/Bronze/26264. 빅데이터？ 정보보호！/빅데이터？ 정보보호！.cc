@@ -11,6 +11,7 @@ int main()
     int n, idx = 0;
     cin >> n;
     string sbt, rst;
+    sbt.reserve(n * 8);
     cin >> sbt;
 
     int scut = 0, bcut = 0;
