@@ -2,13 +2,14 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+typedef long long ll;
 
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    int n, ct;
+    ll n, ct;
     cin >> n;
     vector<int> goHm(n, 0);
 
@@ -25,7 +26,7 @@ int main()
 
     sort(goHm.begin(), goHm.end());
 
-    int rst = 0, ad = 0;
+    ll rst = 0, ad = 0;
 
     for (size_t i = 0; i < n; i++)
     {
