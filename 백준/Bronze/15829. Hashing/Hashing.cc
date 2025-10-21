@@ -22,7 +22,7 @@ int main()
     {
         ll ap = hsg[i] - 'a' + 1;
         rst += rmd(ap, mtp);
-        mtp *= 31;
+        mtp = rmd(mtp, 31);
     }
 
     rst %= SU;
