@@ -15,40 +15,41 @@ int main()
     cin >> n;
     map<ll, ll> cut;
     vector<ll> nums(n);
+    vector<ll> maxNum;
+    maxNum.reserve(n);
 
     ll in;
-    for (size_t i = 0; i < nums.size(); i++)
+    for (size_t i = 0; i < nums.size(); ++i)
     {
         cin >> in;
         nums[i] = in;
         all += in;
-        if (cut.find(in) == cut.end())
-        {
-            cut.insert({in, 0});
-            continue;
-        }
         ++cut[in];
     }
 
     sort(nums.begin(), nums.end());
 
-    ll th, num1, num2, it1Num;
+    ll th, maxIum;
     auto it1 = max_element(cut.begin(), cut.end(), [](auto& a, auto& b)
                            { return a.second < b.second; });
-    num1 = it1->second;
-    it1Num = it1->first;
-    cut.erase(it1);
-    auto it2 = max_element(cut.begin(), cut.end(), [](auto& a, auto& b)
-                           { return a.second < b.second; });
-    num2 = it2->second;
 
-    if (num1 != num2 || n == 1)
+    maxIum = it1->second;
+
+    for (const auto& max : cut)
     {
-        th = it1Num;
+        if (max.second == maxIum)
+        {
+            maxNum.push_back(max.first);
+        }
+    }
+
+    if (maxNum.size() >= 2)
+    {
+        th = maxNum[1];
     }
     else
     {
-        th = it2->first;
+        th = maxNum[0];
     }
 
     ll fr = round((double)all / n);
