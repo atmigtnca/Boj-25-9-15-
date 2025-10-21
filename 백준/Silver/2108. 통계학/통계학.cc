@@ -4,21 +4,20 @@
 #include <map>
 #include <vector>
 using namespace std;
-using ll = long long;
 
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    ll n, all = 0;
+    int n, all = 0;
     cin >> n;
-    map<ll, ll> cut;
-    vector<ll> nums(n);
-    vector<ll> maxNum;
+    map<int, int> cut;
+    vector<int> nums(n);
+    vector<int> maxNum;
     maxNum.reserve(n);
 
-    ll in;
+    int in;
     for (size_t i = 0; i < nums.size(); ++i)
     {
         cin >> in;
@@ -29,7 +28,7 @@ int main()
 
     sort(nums.begin(), nums.end());
 
-    ll th, maxIum;
+    int th, maxIum;
     auto it1 = max_element(cut.begin(), cut.end(), [](auto& a, auto& b)
                            { return a.second < b.second; });
 
@@ -52,9 +51,9 @@ int main()
         th = maxNum[0];
     }
 
-    ll fr = round((double)all / n);
-    ll se = nums[(n / 2)];
-    ll fo = nums[n - 1] - nums[0];
+    int fr = round((double)all / n);
+    int se = nums[(n / 2)];
+    int fo = nums[n - 1] - nums[0];
 
     cout << fr << '\n' << se << '\n' << th << '\n' << fo << '\n';
 
