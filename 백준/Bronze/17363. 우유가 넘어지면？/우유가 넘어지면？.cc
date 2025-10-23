@@ -56,7 +56,6 @@ int main()
     cin >> n >> m;
 
     vector<string> milk(n);
-    vector<string> out(m);
 
     string a;
     for (size_t i = 0; i < n; ++i)
@@ -66,17 +65,13 @@ int main()
         milk[i] = a;
     }
 
-    for (size_t a = 0; a < m; ++a)
+    for (int a = m - 1; a >= 0; --a)
     {
         for (size_t b = 0; b < n; ++b)
         {
-            out[m - a - 1] += milk[b][a];
+            cout << milk[b][a];
         }
-    }
-
-    for (auto& cocoa : out)
-    {
-        cout << cocoa << '\n';
+        cout << '\n';
     }
 
     return 0;
