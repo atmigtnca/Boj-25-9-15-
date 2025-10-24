@@ -7,14 +7,10 @@ using ll = long long;
 
 void clr(vector<vector<int>>& che, int& mIx, int row)
 {
-    int col = 0, zeorst, onerst;
-    while (true)
+    int zeorst, onerst;
+    for (size_t col = 0; col + 8 <= che[0].size(); ++col)
     {
         zeorst = 0, onerst = 0;
-        if (col + 8 > che[0].size())
-        {
-            break;
-        }
         for (size_t i = 0; i < 8; i++)
         {
             for (size_t j = 0; j < 8; j++)
@@ -31,7 +27,6 @@ void clr(vector<vector<int>>& che, int& mIx, int row)
                 }
             }
         }
-        ++col;
         mIx = min(mIx, (zeorst >= onerst ? onerst : zeorst));
     }
 }
