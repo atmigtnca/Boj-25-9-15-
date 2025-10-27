@@ -2,16 +2,7 @@
 using namespace std;
 using ll = long long;
 
-int gcd(int a, int b)
-{
-    while (b != 0)
-    {
-        int tmp = b;
-        b = a % b;
-        a = tmp;
-    }
-    return a;
-}
+int gcd(int a, int b) { return b != 0 ? gcd(b, a % b) : a; }
 
 int main()
 {
