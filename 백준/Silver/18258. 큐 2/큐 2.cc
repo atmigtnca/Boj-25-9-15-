@@ -12,7 +12,7 @@ int main()
     int n;
     cin >> n;
 
-    queue<ll> que;
+    queue<int> que;
 
     string ipt;
     for (size_t i = 0; i < n; i++)
@@ -23,7 +23,7 @@ int main()
 
         if (ipt == "push")
         {
-            ll num;
+            int num;
             cin >> num;
             que.push(num);
         }
