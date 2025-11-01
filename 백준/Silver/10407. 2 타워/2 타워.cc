@@ -7,10 +7,7 @@ int main()
     string h;
     cin >> h;
 
-    if (h == "1")
-        cout << 2 << '\n';
-    else
-        cout << 1 << '\n';
+    cout << (h == "1" ? 2 : 1);
 
     return 0;
 }
