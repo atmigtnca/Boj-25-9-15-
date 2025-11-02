@@ -13,15 +13,12 @@ int main()
     string dix;
     cin >> dix;
     const int size = dix.size();
-
     vector<string> typ;
     typ.reserve(size);
-    typ.push_back(dix);
 
-    for (size_t i = 1; i < size; i++)
+    for (size_t i = 0; i < size; i++)
     {
-        dix.erase(dix.begin());
-        typ.push_back(dix);
+        typ.push_back(dix.substr(i));
     }
 
     sort(typ.begin(), typ.end());
