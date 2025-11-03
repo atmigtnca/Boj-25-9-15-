@@ -24,9 +24,7 @@ int main()
     {
         for (size_t j = i + 1; j < 9; j++)
         {
-            int alltest = all;
-            alltest -= dwarfs[i] + dwarfs[j];
-            if (alltest == 100)
+            if (all - dwarfs[i] - dwarfs[j] == 100)
             {
                 first = j, second = i;
                 fud = true;
