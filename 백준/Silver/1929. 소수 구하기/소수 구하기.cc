@@ -1,25 +1,41 @@
-#include <stdio.h>
+#include <cmath>
+#include <iostream>
+#include <vector>
+using namespace std;
+using ll = long long;
 
-int soSu(int start)
+int main()
 {
-    if (start < 2)
-        return 0;
-    for (int i = 2; i * i <= start; i++)
-        if (start % i == 0)
-            return 0;
-    return 1;
-}
+    ios::sync_with_stdio(0);
+    cin.tie(0);
 
-int main(void)
-{
-    int n, m;
-    int *sta = &n, *end = &m;
-    scanf("%d %d", sta, end);
-    for (int i = *sta; i <= *end; i++)
+    int m, n;
+    cin >> m >> n;
+
+    vector<bool> sou(n + 1);
+    for (size_t i = 2; i <= n; i++)
     {
-        if (soSu(i))
+        sou[i] = true;
+    }
+    sou[1] = false;
+
+    for (int i = 2; i <= sqrt(n); i++)
+    {
+        if (!sou[i])
         {
-            printf("%d\n", i);
+            continue;
+        }
+        for (size_t j = 2; i * j <= n; j++)
+        {
+            sou[i * j] = false;
+        }
+    }
+
+    for (size_t i = m; i <= n; i++)
+    {
+        if (sou[i])
+        {
+            cout << i << '\n';
         }
     }
 
