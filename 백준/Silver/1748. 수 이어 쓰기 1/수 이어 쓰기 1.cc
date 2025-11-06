@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-using ll = long long;
 
 int main()
 {
@@ -9,21 +8,12 @@ int main()
 
     int n;
     cin >> n;
+    int rst = 0;
 
-    int cut = 1, srt = 1;
-    int cir = 10, rst = 0;
-
-    while (srt <= n)
+    for (int i = 1; i <= n; i *= 10)
     {
-        if (srt == cir)
-        {
-            cir *= 10;
-            cut++;
-        }
-        rst += cut;
-        srt++;
+        rst += n - i + 1;
     }
-
     cout << rst << '\n';
 
     return 0;
