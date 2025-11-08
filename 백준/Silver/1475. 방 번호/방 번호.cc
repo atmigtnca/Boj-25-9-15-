@@ -19,15 +19,12 @@ int main()
     for (size_t i = 0; i < n.size(); i++)
     {
         int a = n[i] - '0';
-        if (a == 9)
-        {
-            a = 6;
-        }
         nums[a]++;
     }
 
-    int tmp = round((float)nums[6] / 2);
+    int tmp = round((nums[6] + nums[9]) / 2.0);
     nums[6] = tmp;
+    nums[9] = 0;
 
     auto it = max_element(nums.begin(), nums.end());
     cout << *it << '\n';
