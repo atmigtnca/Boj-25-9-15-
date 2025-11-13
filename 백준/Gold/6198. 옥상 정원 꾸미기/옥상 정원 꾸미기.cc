@@ -16,22 +16,13 @@ int main()
     ll rst = 0;
     for (size_t i = 0; i < n; i++)
     {
-        ll add = 0;
         int ip;
         cin >> ip;
-        while (!tower.empty())
+        while (!tower.empty() && tower.top() <= ip)
         {
-            int srt = tower.top();
-            if (srt <= ip)
-            {
-                tower.pop();
-            }
-            else if (srt >= ip)
-            {
-                rst += tower.size();
-                break;
-            }
+            tower.pop();
         }
+        rst += tower.size();
         tower.push(ip);
     }
 
