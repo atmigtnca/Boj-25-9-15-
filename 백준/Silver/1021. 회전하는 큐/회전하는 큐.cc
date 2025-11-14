@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <deque>
 #include <iostream>
 using namespace std;
@@ -11,11 +12,10 @@ int main()
     int n, m;
     cin >> n >> m;
 
-    deque<int> cir(n);
-
-    for (size_t i = 0; i < n; i++)
+    deque<int> cir;
+    for (size_t i = 1; i <= n; i++)
     {
-        cir[i] = i + 1;
+        cir.push_back(i);
     }
 
     int rst = 0;
@@ -25,49 +25,32 @@ int main()
         int a;
         cin >> a;
 
-        for (size_t b = 0; b < n; b++)
+        auto it = find(cir.begin(), cir.end(), a);
+        int idx = it - cir.begin();
+        if (idx >= (cir.size() + 1) / 2)
         {
-            if (b + 1 > (n + 1) / 2)
+            mid = false;
+        }
+
+        if (mid)
+        {
+            rst += idx;
+            while (cir.front() != a)
             {
-                mid = false;
-                break;
-            }
-            if (cir[b] == a)
-            {
-                break;
+                cir.push_back(cir.front());
+                cir.pop_front();
             }
         }
-        // cout << i << ' ' << mid << '\n';
-
-        while (true)
+        else if (!mid)
         {
-            // for (auto mem : cir)
-            // {
-            //     cout << mem << ' ';
-            // }
-            // cout << '\n';
-
-            if (cir.front() == a)
+            rst += cir.size() - idx;
+            while (cir.front() != a)
             {
-                cir.pop_front();
-                n--;
-                break;
-            }
-
-            if (mid)
-            {
-                int tmp = cir.front();
-                cir.push_back(tmp);
-                cir.pop_front();
-            }
-            else if (!mid)
-            {
-                int tmp = cir.back();
-                cir.push_front(tmp);
+                cir.push_front(cir.back());
                 cir.pop_back();
             }
-            rst++;
         }
+        cir.pop_front();
     }
 
     cout << rst << '\n';
