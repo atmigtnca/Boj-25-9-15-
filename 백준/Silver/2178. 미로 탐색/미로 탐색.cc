@@ -32,65 +32,26 @@ int main()
 
     queue<pair<int, int>> p;
     p.push({1, 1});
+    vis[1][1] = true;
 
-    bool endchk = true;
-    int count = 0, rst;
-    while (endchk)
+    while (!p.empty())
     {
-        // count++;
         pair<int, int> cur = p.front();
         p.pop();
-
-        if (cur.Y == n && cur.X == m)
-        {
-            rst = mro[cur.Y][cur.X];
-            break;
-        }
-        // auto [cur_y, cur_x] = p.front();
-        int tmp = mro[cur.Y][cur.X];
-
-        // for (size_t a = 1; a <= n; a++)
-        // {
-        //     for (size_t i = 1; i <= m; i++)
-        //     {
-        //         cout << mro[a][i] << ' ';
-        //     }
-        //     cout << '\n';
-        // }
-        // cout << '\n';
 
         for (int i = 0; i < 4; i++)
         {
             int ny = cur.Y + dy[i], nx = cur.X + dx[i];
-            if (ny < 0 || ny > n || nx < 0 || nx > m)
-            {
-                continue;
-            }
             if (mro[ny][nx] == 1 && vis[ny][nx] != true)
             {
-                mro[ny][nx] = tmp + 1;
+                mro[ny][nx] = mro[cur.Y][cur.X] + 1;
                 p.push({ny, nx});
+                vis[ny][nx] = true;
             }
-            // if (ny == n && nx == m)
-            // {
-            //     rst = mro[ny][nx];
-            //     endchk = false;
-            // }
         }
-        vis[cur.Y][cur.X] = true;
-
-        // for (size_t a = 1; a <= n; a++)
-        // {
-        //     for (size_t i = 1; i <= m; i++)
-        //     {
-        //         cout << mro[a][i] << ' ';
-        //     }
-        //     cout << '\n';
-        // }
-        // cout << '\n';
     }
 
-    cout << rst << '\n';
+    cout << mro[n][m] << '\n';
 
     return 0;
 }
