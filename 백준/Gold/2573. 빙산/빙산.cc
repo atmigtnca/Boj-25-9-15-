@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <queue>
 #include <utility>
@@ -13,7 +14,7 @@ struct ice
 {
     int y;
     int x;
-    int melt;  // 녹는 깊이
+    int melt;
 };
 
 int main()
@@ -24,19 +25,14 @@ int main()
     int row, col;
     cin >> row >> col;
 
-    vector<vector<int>> hig(row, vector<int>(col, 0));  // 빙산의 높이
-    vector<vector<int>> vis(row, vector<int>(col, 0));  // 빙산의 유무
-    queue<pair<int, int>> eit;                          // 빙산
+    vector<vector<int>> hig(row, vector<int>(col, 0));
+    vector<vector<int>> vis(row, vector<int>(col, 0));
+    vector<vector<int>> chk(row, vector<int>(col, 0));
+    queue<pair<int, int>> cek;
+    queue<pair<int, int>> eit;
     queue<ice> hol;
 
-    // 일단 지금 생각했을때
-    // 기존의 BFS로 하면 동시에 바다에 닿는 면적은 계산할 수 없음
-    // 동시에 바다에 닿는다고 생각해야됨!
-
-    // 그러면 BFS를 돌면서 우선 녹는 깊이를 저장해놓고
-    // 그 후에 한번에 녹는걸로 하면 될거같음!
-
-    int count = 0;  // 빙산 개수 체크
+    int count = 0;
     for (size_t i = 0; i < row; i++)
     {
         for (size_t j = 0; j < col; j++)
@@ -44,9 +40,9 @@ int main()
             cin >> hig[i][j];
             if (hig[i][j] > 0)
             {
-                count++;           // 빙산 개수 체크
-                vis[i][j] = 1;     // 빙산 유무 체크
-                eit.push({i, j});  // 빙산 위치 저장
+                count++;
+                vis[i][j] = 1;
+                eit.push({i, j});
             }
         }
     }
@@ -65,7 +61,7 @@ int main()
             {
                 int ny = cur.Y + dy[i];
                 int nx = cur.X + dx[i];
-                if (hig[ny][nx] == 0)  // 0을 만나면
+                if (hig[ny][nx] == 0)
                 {
                     down++;
                 }
@@ -95,23 +91,15 @@ int main()
             break;
         }
 
-        // for (size_t i = 0; i < row; i++)
-        // {
-        //     for (size_t j = 0; j < col; j++)
-        //     {
-        //         cout << hig[i][j] << ' ';
-        //     }
-        //     cout << '\n';
-        // }
-        // cout << count << '\n';
+        int endcheck = 1;
 
-        vector<vector<int>> chk(row, vector<int>(col, 0));
-        queue<pair<int, int>> cek;
-        int endcheck = 1;  // 새로운 빙하에 갈때마다 개수를 증가해서
-                           // endcheck == count면 아직 빙하가 한조각인거임
         if (cunt != count)
         {
             cek.push(eit.front());
+            for (size_t i = 0; i < row; i++)
+            {
+                fill(chk[i].begin(), chk[i].end(), 0);
+            }
             chk[cek.front().Y][cek.front().X] = 1;
             while (!cek.empty())
             {
@@ -131,7 +119,6 @@ int main()
             }
             if (endcheck != count)
             {
-                // cout << endcheck << "===" << '\n';
                 cout << rst << '\n';
                 return 0;
             }
@@ -141,13 +128,3 @@ int main()
 
     return 0;
 }
-
-// for (size_t i = 0; i < row; i++)
-// {
-//     for (size_t j = 0; j < col; j++)
-//     {
-//         cout << hig[i][j] << ' ';
-//     }
-//     cout << '\n';
-// }
-// cout << count << '\n';
