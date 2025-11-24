@@ -4,7 +4,6 @@
 using namespace std;
 using ll = long long;
 int f, s, g, u, d;
-int ele[1000001];
 int vis[1000001];
 int dx[2];
 
@@ -21,7 +20,6 @@ int main()
     }
 
     dx[0] = u, dx[1] = -d;
-    ele[g] = 1;
     fill(vis, vis + f + 1, -1);
 
     // f : 건물 높이
