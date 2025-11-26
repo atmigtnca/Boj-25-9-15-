@@ -9,10 +9,6 @@ void fnc(int x, int y, int N)
 {
     int srtcol = par[y][x];
     bool chk = true;
-    if (N == 0)
-    {
-        return;
-    }
     for (int i = y; i < y + N; i++)
     {
         for (int j = x; j < x + N; j++)
