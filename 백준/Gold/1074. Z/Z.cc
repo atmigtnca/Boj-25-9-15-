@@ -1,35 +1,34 @@
 #include <iostream>
 using namespace std;
 using ll = long long;
-int num, r, c, rst;
+int num, r, c;
 
 void fnc(int N, int y, int x)
 {
-    if (y == r && x == c)
-    {
-        rst = num;
-        return;
-    }
     if (N == 1)
     {
         return;
     }
     int div = N / 2;
     int pus = div * div;
-    int cut = 0;
-    for (int i = 0; i < 2; i++)
+    if (r < y + div && c < x + div)
     {
-        for (int j = 0; j < 2; j++)
-        {
-            int dy = y + i * div;
-            int dx = x + j * div;
-            if (r - dy < div && r - dy >= 0 && c - dx < div && c - dx >= 0)
-            {
-                num += pus * cut;
-                fnc(div, dy, dx);
-            }
-            cut++;
-        }
+        fnc(div, y, x);
+    }
+    else if (r < y + div && c >= x + div)
+    {
+        num += pus;
+        fnc(div, y, x + div);
+    }
+    else if (r >= y + div && c < x + div)
+    {
+        num += 2 * pus;
+        fnc(div, y + div, x);
+    }
+    else
+    {
+        num += 3 * pus;
+        fnc(div, y + div, x + div);
     }
 }
 
@@ -44,7 +43,7 @@ int main()
 
     fnc(siz, 0, 0);
 
-    cout << rst << '\n';
+    cout << num << '\n';
 
     return 0;
 }
