@@ -1,31 +1,30 @@
 #include <iostream>
 using namespace std;
 using ll = long long;
-int num, r, c;
 
-int fnc(int N, int y, int x)
+int fnc(int N, int r, int c)
 {
-    if (N == 0)
+    if (N == 1)
     {
         return 0;
     }
     int div = N / 2;
     int pus = div * div;
-    if (r < y + div && c < x + div)
+    if (r < div && c < div)
     {
-        return fnc(div, y, x);
+        return fnc(div, r, c);
     }
-    else if (r < y + div && c >= x + div)
+    else if (r < div && c >= div)
     {
-        return pus + fnc(div, y, x + div);
+        return pus + fnc(div, r, c - div);
     }
-    else if (r >= y + div && c < x + div)
+    else if (r >= div && c < div)
     {
-        return 2 * pus + fnc(div, y + div, x);
+        return 2 * pus + fnc(div, r - div, c);
     }
     else
     {
-        return 3 * pus + fnc(div, y + div, x + div);
+        return 3 * pus + fnc(div, r - div, c - div);
     }
 }
 
@@ -34,11 +33,11 @@ int main()
     ios::sync_with_stdio(0);
     cin.tie(0), cout.tie(0);
 
-    int N;
+    int N, r, c;
     cin >> N >> r >> c;
     int siz = 1 << N;
 
-    cout << fnc(siz, 0, 0) << '\n';
+    cout << fnc(siz, r, c) << '\n';
 
     return 0;
 }
