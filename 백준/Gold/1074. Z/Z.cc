@@ -3,32 +3,29 @@ using namespace std;
 using ll = long long;
 int num, r, c;
 
-void fnc(int N, int y, int x)
+int fnc(int N, int y, int x)
 {
-    if (N == 1)
+    if (N == 0)
     {
-        return;
+        return 0;
     }
     int div = N / 2;
     int pus = div * div;
     if (r < y + div && c < x + div)
     {
-        fnc(div, y, x);
+        return fnc(div, y, x);
     }
     else if (r < y + div && c >= x + div)
     {
-        num += pus;
-        fnc(div, y, x + div);
+        return pus + fnc(div, y, x + div);
     }
     else if (r >= y + div && c < x + div)
     {
-        num += 2 * pus;
-        fnc(div, y + div, x);
+        return 2 * pus + fnc(div, y + div, x);
     }
     else
     {
-        num += 3 * pus;
-        fnc(div, y + div, x + div);
+        return 3 * pus + fnc(div, y + div, x + div);
     }
 }
 
@@ -41,9 +38,7 @@ int main()
     cin >> N >> r >> c;
     int siz = 1 << N;
 
-    fnc(siz, 0, 0);
-
-    cout << num << '\n';
+    cout << fnc(siz, 0, 0) << '\n';
 
     return 0;
 }
