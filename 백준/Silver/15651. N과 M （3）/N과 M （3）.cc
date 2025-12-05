@@ -3,7 +3,6 @@ using namespace std;
 using ll = long long;
 int n, m;
 int arr[10];
-bool iuse[10];
 
 void fnc(int k)
 {
@@ -18,11 +17,8 @@ void fnc(int k)
     }
     for (int i = 1; i <= n; i++)
     {
-        if (!iuse[i])
-        {
-            arr[k] = i;
-            fnc(k + 1);
-        }
+        arr[k] = i;
+        fnc(k + 1);
     }
 }
 
