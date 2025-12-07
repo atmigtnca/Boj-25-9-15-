@@ -6,22 +6,9 @@ using namespace std;
 using ll = long long;
 vector<vector<int>> frd;
 int vis[101];
-int rst[101];
 int N, M;
 
-int minfnc()
-{
-    int MIN = *min_element(rst + 1, rst + N + 1);
-    for (int i = 1; i <= N; i++)
-    {
-        if (rst[i] == MIN)
-        {
-            return i;
-        }
-    }
-}
-
-void cntfnc(int a)
+int cntfnc(int a)
 {
     queue<int> cur;
     fill(vis, vis + N + 1, -1);
@@ -41,10 +28,12 @@ void cntfnc(int a)
             vis[mem] = vis[spt] + 1;
         }
     }
+    int add = 0;
     for (int i = 1; i <= N; i++)
     {
-        rst[a] += vis[i];
+        add += vis[i];
     }
+    return add;
 }
 
 void addfnc()
@@ -66,14 +55,21 @@ int main()
     ios::sync_with_stdio(0);
     cin.tie(0), cout.tie(0);
 
+    int MIN = 505050, rstIdx;
+
     addfnc();
 
     for (int i = 1; i <= N; i++)
     {
-        cntfnc(i);
+        int tmp = cntfnc(i);
+        if (tmp < MIN)
+        {
+            MIN = tmp;
+            rstIdx = i;
+        }
     }
 
-    cout << minfnc() << '\n';
+    cout << rstIdx << '\n';
 
     return 0;
 }
