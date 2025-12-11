@@ -3,37 +3,33 @@
 using namespace std;
 using ll = long long;
 ll X, Y, W, S;
-ll rst[3];
 
 void iptfnc()
 {
     cin >> X >> Y >> W >> S;
     if (X < Y)
     {
-        ll tmp = X;
-        X = Y;
-        Y = tmp;
+        swap(X, Y);
     }
 }
 
 ll rstfnc()
 {
-    rst[0] = (X + Y) * W;
+    ll case1, case2, case3;
+    case1 = (X + Y) * W;
 
     if ((X - Y) % 2)
     {
-        rst[1] = ((X - 1) * S) + W;
+        case2 = ((X - 1) * S) + W;
     }
     else
     {
-        rst[1] = X * S;
+        case2 = X * S;
     }
 
-    rst[2] = X * W + Y * (S - W);
+    case3 = X * W + Y * (S - W);
 
-    sort(rst, rst + 3);
-
-    return rst[0];
+    return min({case1, case2, case3});
 }
 
 int main()
