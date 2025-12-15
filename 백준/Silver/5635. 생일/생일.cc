@@ -10,8 +10,21 @@ struct Person
     int month;
     int year;
 };
-Person old_person = {"OLD", 13, 32, 2011};
-Person young_person = {"YOUNG", 0, 0, 1989};
+Person old_person = {"OLD", 99, 99, 9999};
+Person young_person = {"YOUNG", 0, 0, 0};
+
+bool isOlder(const Person& a, const Person& b)
+{
+    if (a.year != b.year)
+    {
+        return a.year < b.year;
+    }
+    if (a.month != b.month)
+    {
+        return a.month < b.month;
+    }
+    return a.day < b.day;
+}
 
 Person fndfnc()
 {
@@ -26,36 +39,13 @@ Person fndfnc()
 
 void cmpfnc(Person& in)
 {
-    if (in.year > young_person.year)
+    if (isOlder(young_person, in))
     {
         young_person = in;
     }
-    else if (in.year == young_person.year)
-    {
-        if (in.month > young_person.month)
-        {
-            young_person = in;
-        }
-        else if (in.month == old_person.month && in.day > young_person.day)
-        {
-            young_person = in;
-        }
-    }
-
-    if (in.year < old_person.year)
+    if (isOlder(in, old_person))
     {
         old_person = in;
-    }
-    else if (in.year == old_person.year)
-    {
-        if (in.month < old_person.month)
-        {
-            old_person = in;
-        }
-        else if (in.month == old_person.month && in.day < old_person.day)
-        {
-            old_person = in;
-        }
     }
 }
 
