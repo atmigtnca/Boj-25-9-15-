@@ -5,42 +5,19 @@ using ll = long long;
 int fnc()
 {
     int N;
-    int rst;
     cin >> N;
 
-    int fn = N / 5, tn = (N % 5) / 3;
-
-    while (1)
+    int tn = 0;
+    while (N >= 0)
     {
-        for (int i = 0; i < N / 3; i++)
+        if (N % 5 == 0)
         {
-            if ((fn * 5) + (i * 3) == N)
-            {
-                tn = i;
-                break;
-            }
+            return tn + (N / 5);
         }
-
-        rst = (fn * 5) + (tn * 3);
-        if (rst == N)
-        {
-            break;
-        }
-        else
-        {
-            fn--;
-        }
-        if (fn < 0)
-        {
-            if (N % 3 == 0)
-            {
-                return N / 3;
-            }
-            return -1;
-        }
+        N -= 3;
+        tn++;
     }
-
-    return fn + tn;
+    return -1;
 }
 
 int main()
