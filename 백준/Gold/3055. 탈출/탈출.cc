@@ -8,8 +8,7 @@
 using namespace std;
 using ll = long long;
 queue<pair<int, int>> cur;
-pair<int, int> srt;
-pair<int, int> edn;
+pair<int, int> srt, edn;
 int dy[] = {1, -1, 0, 0};
 int dx[] = {0, 0, 1, -1};
 int wtr[51][51];  // 홍수 발생
@@ -31,34 +30,20 @@ void escfnc()  // 고슴도치 탈출 함수
 
             if (ny == edn.Y && nx == edn.X)
             {
-                // for (int i = 0; i < R; i++)
-                // {
-                //     for (int j = 0; j < C; j++)
-                //     {
-                //         cout << hdh[i][j] << ' ';
-                //     }
-                //     cout << '\n';
-                // }
-
                 cout << hdh[cy][cx] + 1 << '\n';
                 return;
             }
 
             if (ny < 0 || ny >= R || nx < 0 || nx >= C)
             {
-                // cout << 1 << '\n';
                 continue;
             }
             if (wtr[ny][nx] <= 0 || hdh[ny][nx] > 0)
             {
-                // cout << 2 << '\n';
-
                 continue;
             }
             if (hdh[cy][cx] + 1 >= wtr[ny][nx])
             {
-                // cout << 3 << '\n';
-
                 continue;
             }
 
@@ -66,15 +51,6 @@ void escfnc()  // 고슴도치 탈출 함수
             hdh[ny][nx] = hdh[cy][cx] + 1;
         }
     }
-
-    // for (int i = 0; i < R; i++)
-    // {
-    //     for (int j = 0; j < C; j++)
-    //     {
-    //         cout << hdh[i][j] << ' ';
-    //     }
-    //     cout << '\n';
-    // }
 
     cout << "KAKTUS\n";
     return;
@@ -110,15 +86,6 @@ void wtrfnc()  // 홍수발생 함수
             }
         }
     }
-
-    // for (int i = 0; i < R; i++)
-    // {
-    //     for (int j = 0; j < C; j++)
-    //     {
-    //         cout << wtr[i][j] << ' ';
-    //     }
-    //     cout << '\n';
-    // }
 
     return;
 }
@@ -156,15 +123,6 @@ void iptfnc()  // 입력받는 함수
             }
         }
     }
-
-    // for (int i = 0; i < R; i++)
-    // {
-    //     for (int j = 0; j < C; j++)
-    //     {
-    //         cout << wtr[i][j] << ' ';
-    //     }
-    //     cout << '\n';
-    // }
 
     return;
 }
