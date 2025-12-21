@@ -75,8 +75,7 @@ void wtrfnc()  // 홍수발생 함수
                 {
                     continue;
                 }
-                if ((wtr[ny][nx] != 1e9 && wtr[ny][nx] >= 0) ||
-                    wtr[ny][nx] == -1)
+                if (wtr[ny][nx] != 1e9)
                 {
                     continue;
                 }
@@ -108,18 +107,18 @@ void iptfnc()  // 입력받는 함수
             {
                 case 'X':
                     wtr[i][j] = -1;
-                    continue;
+                    break;
                 case '*':
                     cur.push({i, j});
                     wtr[i][j] = 0;
-                    continue;
+                    break;
                 case 'S':
                     srt = {i, j};
-                    continue;
+                    break;
                 case 'D':
                     edn = {i, j};
                     wtr[i][j] = -1;
-                    continue;
+                    break;
             }
         }
     }
