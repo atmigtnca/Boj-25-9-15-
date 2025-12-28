@@ -11,7 +11,7 @@ int twoN(int n)
     ary[1] = 1, ary[2] = 2;
     for (int i = 3; i <= n; i++)
     {
-        ary[i] = moD(moD(ary[i - 1]) + moD(ary[i - 2]));
+        ary[i] = moD(ary[i - 1] + ary[i - 2]);
     }
     return ary[n];
 }
