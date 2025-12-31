@@ -1,14 +1,11 @@
 #include <iostream>
 using namespace std;
 using ll = long long;
-int fib[44][4];
+int fib[44][4] = {{1, 0}, {0, 1}};
 int n;
 
 void fibfnc()
 {
-    fib[0][0] = 1, fib[0][1] = 0;
-    fib[1][0] = 0, fib[1][1] = 1;
-
     for (int i = 2; i <= 40; i++)
     {
         fib[i][0] = fib[i - 1][0] + fib[i - 2][0];
