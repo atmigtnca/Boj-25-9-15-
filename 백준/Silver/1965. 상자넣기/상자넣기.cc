@@ -20,18 +20,16 @@ void rstfnc()
 {
     for (int i = 1; i <= n; i++)
     {
-        int cur = ary[i];
         for (int j = 1; j < i; j++)
         {
-            if (ary[j] < cur && dp[j] >= dp[i])
+            if (ary[j] < ary[i])
             {
-                dp[i] = dp[j] + 1;
+                dp[i] = max(dp[i], dp[j] + 1);
             }
         }
     }
 
-    auto rst = max_element(&dp[1], &dp[n] + 1);
-    cout << *rst << '\n';
+    cout << *max_element(dp + 1, dp + n + 1) << '\n';
 }
 
 int main()
