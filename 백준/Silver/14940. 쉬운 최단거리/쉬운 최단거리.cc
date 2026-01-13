@@ -5,8 +5,8 @@
 using namespace std;
 using ll = long long;
 queue<pair<int, int>> cur;
-bool vis[1001][1001];
-int dis[1001][1001];
+vector<vector<bool>> vis;
+vector<vector<int>> dis;
 int dy[] = {1, -1, 0, 0};
 int dx[] = {0, 0, 1, -1};
 int n, m;
@@ -14,6 +14,8 @@ int n, m;
 void input()
 {
     cin >> n >> m;
+    vis.resize(n, vector<bool>(m, false));
+    dis.resize(n, vector<int>(m));
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
@@ -55,8 +57,6 @@ void solve()
         }
     }
 }
-
-void mnus() {}
 
 void output()
 {
