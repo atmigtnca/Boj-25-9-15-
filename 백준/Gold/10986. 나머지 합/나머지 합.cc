@@ -21,6 +21,7 @@ void input()
 {
     cin >> n >> m;
     cnt.resize(m);
+    cnt[0] = 1;
 
     ll sum = 0;
 
@@ -29,10 +30,6 @@ void input()
         ll ipt;
         cin >> ipt;
         sum = (sum + ipt % m) % m;
-        if (!sum)
-        {
-            rst++;
-        }
         cnt[sum]++;
     }
 }
