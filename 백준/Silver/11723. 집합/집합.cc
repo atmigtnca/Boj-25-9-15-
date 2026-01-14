@@ -1,51 +1,49 @@
 #include <iostream>
-#include <string>
-#include <vector>
 using namespace std;
 using ll = long long;
-vector<bool> set;
+int bset;
 int m;
 
 void solve()
 {
-    string ipt;
+    char ipt[7];
     int x;
     cin >> ipt;
 
-    if (ipt == "add")
+    if (ipt[1] == 'd')
     {
         cin >> x;
-        set[x] = 1;
+        bset |= (1 << (x - 1));
     }
-    else if (ipt == "remove")
+    else if (ipt[0] == 'r')
     {
         cin >> x;
-        set[x] = 0;
+        bset &= (~(1 << (x - 1)));
     }
-    else if (ipt == "check")
+    else if (ipt[0] == 'c')
     {
         cin >> x;
-        if (set[x] == 1)
+        if ((bset >> (x - 1)) & 1)
         {
-            cout << 1 << '\n';
+            cout << "1\n";
         }
         else
         {
-            cout << 0 << '\n';
+            cout << "0\n";
         }
     }
-    else if (ipt == "toggle")
+    else if (ipt[0] == 't')
     {
         cin >> x;
-        set[x] = (set[x] == 0) ? 1 : 0;
+        bset ^= (1 << (x - 1));
     }
-    else if (ipt == "all")
+    else if (ipt[1] == 'l')
     {
-        fill(set.begin(), set.end(), 1);
+        bset = 0xfffff;
     }
-    else if (ipt == "empty")
+    else
     {
-        fill(set.begin(), set.end(), 0);
+        bset = 0;
     }
 }
 
@@ -63,7 +61,6 @@ int main()
     ios::sync_with_stdio(0);
     cin.tie(0), cout.tie(0);
 
-    set.resize(22, 0);
     input();
 
     return 0;
