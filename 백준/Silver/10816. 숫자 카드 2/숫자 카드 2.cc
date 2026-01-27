@@ -1,33 +1,30 @@
-#include <stdio.h>
-#define LE 20000001
-#define P 10000000
+#include <algorithm>
+#include <iostream>
+using namespace std;
+using ll = long long;
+int a[1000005];
+int n;
 
-int main(void)
+int main()
 {
-    int n, m, sar[LE] = {0};
-    scanf("%d", &n);
+    ios::sync_with_stdio(0);
+    cin.tie(0), cout.tie(0);
 
+    cin >> n;
     for (int i = 0; i < n; i++)
     {
-        int tm;
-        scanf("%d", &tm);
-        sar[tm + P]++;
+        cin >> a[i];
     }
-
-    scanf("%d", &m);
-    // int fnl[rst];
-
-    for (int k = 0; k < m; k++)
+    sort(a, a + n);
+    int m;
+    cin >> m;
+    while (m--)
     {
-        int rt;
-        scanf("%d", &rt);
-        printf("%d ", sar[rt + P]);
+        int t;
+        cin >> t;
+        cout << upper_bound(a, a + n, t) - lower_bound(a, a + n, t) << ' ';
     }
-
-    // for (int j = 0; j < rst; j++)
-    // {
-    //     printf("%d ", fnl[j]);
-    // }
+    cout << '\n';
 
     return 0;
 }
