@@ -1,15 +1,52 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <algorithm>
+#include <iostream>
+using namespace std;
+using ll = long long;
+int a[1000005];
+int n;
 
-int cmp(const void*a,const void*b){int x=*(const int*)a,y=*(const int*)b;return x<y?-1:x>y;}
-
-int main(){
-    int n,m,x; scanf("%d",&n);
-    int a[n]; for(int i=0;i<n;i++) scanf("%d",a+i);
-    qsort(a,n,sizeof*a,cmp);
-    scanf("%d",&m);
-    while(m--){
-        scanf("%d",&x);
-        puts(bsearch(&x,a,n,sizeof*a,cmp) ? "1" : "0");
+int bin(int target)
+{
+    int st = 0;
+    int en = n - 1;
+    while (st <= en)
+    {
+        int mid = (st + en) / 2;
+        if (a[mid] < target)
+        {
+            st = mid + 1;
+        }
+        else if (a[mid] > target)
+        {
+            en = mid - 1;
+        }
+        else
+        {
+            return 1;
+        }
     }
+    return 0;
+}
+
+int main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0), cout.tie(0);
+
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    sort(a, a + n);
+    int m;
+    cin >> m;
+    while (m--)
+    {
+        int t;
+        cin >> t;
+        cout << bin(t) << '\n';
+    }
+
+    return 0;
 }
