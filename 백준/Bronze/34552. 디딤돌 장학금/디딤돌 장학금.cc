@@ -16,11 +16,10 @@ void fnc()
     while (n--)
     {
         cin >> b >> l >> s;
-        if (l < 2.0 || s < 17)
+        if (l >= 2.0 && s >= 17)
         {
-            continue;
+            rst += dim[b];
         }
-        rst += dim[b];
     }
     cout << rst << '\n';
 }
