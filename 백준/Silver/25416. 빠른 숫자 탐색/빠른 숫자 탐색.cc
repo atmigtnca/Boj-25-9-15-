@@ -40,7 +40,7 @@ int solve()
 
 void input()
 {
-    int srtx, srty;
+    int srty, srtx;
     for (int i = 0; i < 5; i++)
     {
         for (int j = 0; j < 5; j++)
@@ -48,9 +48,9 @@ void input()
             cin >> ary[i][j];
         }
     }
-    cin >> srtx >> srty;
-    cur.push({srtx, srty});
-    vis[srtx][srty] = 1;
+    cin >> srty >> srtx;
+    cur.push({srty, srtx});
+    vis[srty][srtx] = 1;
 }
 
 int main()
