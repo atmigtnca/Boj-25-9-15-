@@ -5,40 +5,38 @@ using namespace std;
 using ll = long long;
 
 vector<int> a_ary, b_ary, rst_ary;
+int a, b;
 
 void input()
 {
-    int a, b;
     cin >> a >> b;
 
     a_ary.resize(a);
     b_ary.resize(b);
 
-    for (size_t i = 0; i < a; i++)
+    for (auto& t : a_ary)
     {
-        int t;
         cin >> t;
-        a_ary[i] = t;
     }
-    for (size_t i = 0; i < b; i++)
+    for (auto& t : b_ary)
     {
-        int t;
         cin >> t;
-        b_ary[i] = t;
     }
 }
 
 void solve()
 {
+    rst_ary.reserve(a);
+
     sort(a_ary.begin(), a_ary.end());
     sort(b_ary.begin(), b_ary.end());
 
-    for (size_t i = 0; i < a_ary.size(); i++)
+    for (int num : a_ary)
     {
-        bool chk = binary_search(b_ary.begin(), b_ary.end(), a_ary[i]);
+        bool chk = binary_search(b_ary.begin(), b_ary.end(), num);
         if (!chk)
         {
-            rst_ary.push_back(a_ary[i]);
+            rst_ary.push_back(num);
         }
     }
 }
